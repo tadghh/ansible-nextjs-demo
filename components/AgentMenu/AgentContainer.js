@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { AgentTypes } from "@/AgentsInfo/AgentEnums";
 import AgentTile from "./AgentTile";
 const AgentText = [
@@ -7,18 +7,22 @@ const AgentText = [
     { title: "Java", type: AgentTypes.JAVA },
 ]
 export default function AgentContainer() {
-
+    const [agentType, setAgentType] = useState(AgentTypes)
 
     async function onSubmit(data) {
 
     }
-
+    useEffect(() => {
+        console.log(agentType)
+    }, [agentType])
 
     return (
         <div className="flex items-center justify-center overflow-hidden font-mono text-sm bg-white h-1/3">
             <div className='flex justify-around w-3/4 p-2 m-4 text-black border-2 border-black rounded-md bg-gray-50 h-3/4'>
                 {AgentText.map((item, index) => {
-                    return <AgentTile key={index} agent_type={item.title} />
+                    return <AgentTile key={index} agent_title={item.title} agentState={() => {
+                        setAgentType(item.type)
+                    }} />
                 })}
             </div>
         </div>
