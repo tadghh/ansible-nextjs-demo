@@ -1,9 +1,13 @@
 const Ansible = require('node-ansible');
 
+
+//Playbooks must end in .yml
+//Cannot have directory in the method
 const runAnsiblePlaybook = async (playbookName, needOutput = false) => {
     console.log(playbookName)
     let workingPath = '/home/wsl/ugh/ansible/playbooks'
     try {
+
 
         const command = new Ansible.Playbook().playbook(playbookName).variables({ ansible_become_pass: "pass" }).inventory('inventory.cfg');
 
