@@ -12,7 +12,7 @@ export default function Manage() {
         resolver: yupResolver(validationSchema),
     });
     const [agentType, setAgentType] = useState(AgentTypes)
-    const [outputData, setOutputData] = useState();
+    const [outputData, setOutputData] = useState(null);
     async function onSubmit(data) {
         try {
             let response = await fetch("/api/ansible/executeAnsiblePlaybook", {
@@ -22,12 +22,11 @@ export default function Manage() {
                     "Content-Type": "application/json",
                 },
             });
-            console.log(data)
-            console.log(response)
-            console.log("response")
+
             //  let responsedata = await response.json();
             if (response.status == 200) {
-                setOutputData(response.json())
+                const output = await response.json();
+                setOutputData(output)
                 console.log("no bang")
             } else {
 
