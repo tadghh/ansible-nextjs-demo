@@ -15,7 +15,7 @@ export default function Manage() {
     const [outputData, setOutputData] = useState();
     async function onSubmit(data) {
         try {
-            let response = await fetch("/api/ansible/test", {
+            let response = await fetch("/api/ansible/executeAnsiblePlaybook", {
                 method: "POST",
                 body: JSON.stringify(data),
                 headers: {
@@ -23,7 +23,8 @@ export default function Manage() {
                 },
             });
             console.log(data)
-
+            console.log(response)
+            console.log("response")
             //  let responsedata = await response.json();
             if (response.status == 200) {
                 setOutputData(response.json())
@@ -60,7 +61,8 @@ export default function Manage() {
                     <button className="border-2 border-black" type="submit">Submit</button>
                 </form>
                 <div className="grow" />
-                <AnsibleOutput outputData={outputData} />
+                {outputData ? <AnsibleOutput outputData={outputData} /> : <></>}
+
             </div>
         </div>
     );
