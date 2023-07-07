@@ -6,9 +6,6 @@ import AgentContainer from "@/components/AgentMenu/AgentContainer";
 import { AgentTypes } from "@/AgentsInfo/AgentEnums";
 import { useState } from "react";
 
-import { useContext } from "react";
-
-
 
 export default function Manage() {
     const { register, setValue, handleSubmit, formState: { errors } } = useForm({
