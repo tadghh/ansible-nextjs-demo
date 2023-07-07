@@ -11,24 +11,25 @@ export default function Manage() {
         resolver: yupResolver(validationSchema),
     });
     const [agentType, setAgentType] = useState(AgentTypes)
+    const [outputData, setOutputData] = useState();
     async function onSubmit(data) {
         try {
-            // let response = await fetch("/api/ansible/test", {
-            //     method: "POST",
-            //     body: JSON.stringify(data),
-            //     headers: {
-            //         "Content-Type": "application/json",
-            //     },
-            // });
+            let response = await fetch("/api/ansible/test", {
+                method: "POST",
+                body: JSON.stringify(data),
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
             console.log(data)
 
-            // let responsedata = await response.json();
-            // if (response.status == 200) {
-            //     console.log("Nothing blew up")
-            // } else {
+            let responsedata = await response.json();
+            if (response.status == 200) {
+                setOutputData(response.body)
+            } else {
 
-            //     console.log("Bang!")
-            // }
+                console.log("Bang!")
+            }
         } catch (e) {
             console.log(e);
         }

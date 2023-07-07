@@ -6,7 +6,7 @@ const AgentText = [
     { title: "Dot Net", type: AgentTypes.DOT_NET },
     { title: "Java", type: AgentTypes.JAVA },
 ]
-export default function AgentContainer({ selectedAgent, setValue, register }) {
+export default function AgentContainer({ selectedAgent, setValue }) {
 
 
     return (
