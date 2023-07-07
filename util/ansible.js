@@ -2,7 +2,8 @@ const Ansible = require('node-ansible');
 
 
 //Playbooks must end in .yml
-//Cannot have directory in the method
+//Cannot have directory in the method parameter
+//askPass, askSudoPass is outdated
 const runAnsiblePlaybook = async (playbookName, needOutput = false) => {
     console.log(playbookName)
     let workingPath = '/home/wsl/ugh/ansible/playbooks'
