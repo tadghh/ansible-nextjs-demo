@@ -1,9 +1,11 @@
-import runAnsibleCommand from '@/util/ansible';
+import RunAnsibleCommand from '@/util/ansible';
 
 export default async function handler(req, res) {
     if (req.method === 'POST') {
         try {
-            await runAnsibleCommand();
+            console.log(getInventoryPath())
+            console.log("ass")
+            RunAnsibleCommand();
             res.status(200).json({ message: 'Ansible command executed successfully' });
         } catch (error) {
             console.error('Error executing Ansible command:', error);

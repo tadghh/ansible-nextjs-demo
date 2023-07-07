@@ -5,7 +5,10 @@ import { validationSchema } from "@/yup-schemas/userschema";
 import AgentContainer from "@/components/AgentMenu/AgentContainer";
 import { AgentTypes } from "@/AgentsInfo/AgentEnums";
 import { useState } from "react";
-import AnsibleOutput from "@/components/Output/AnsibleOutput";
+
+import { useContext } from "react";
+
+
 
 export default function Manage() {
     const { register, setValue, handleSubmit, formState: { errors } } = useForm({
@@ -60,7 +63,7 @@ export default function Manage() {
                     <button className="border-2 border-black" type="submit">Submit</button>
                 </form>
                 <div className="grow" />
-                <AnsibleOutput outputData={outputData} />
+                {/* <AnsibleOutput outputData={outputData} /> */}
             </div>
         </div>
     );
